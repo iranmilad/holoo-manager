@@ -17,8 +17,8 @@ class TopicsController extends Controller
      */
     public function show(User $user)
     {
-        $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+
+
 
         $user= Auth::user();
         // Update user config

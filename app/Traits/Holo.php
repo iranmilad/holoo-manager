@@ -16,7 +16,7 @@ trait Holo{
 
         $curl = curl_init();
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
 
         curl_setopt_array($curl, array(
           CURLOPT_URL => $url.'/GetAllAccount',
@@ -61,7 +61,7 @@ trait Holo{
 
         $curl = curl_init();
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
 
         curl_setopt_array($curl, array(
           CURLOPT_URL => $url.'/getAllHolooProducts',
@@ -105,7 +105,7 @@ trait Holo{
 
         $curl = curl_init();
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
 
         curl_setopt_array($curl, array(
           CURLOPT_URL => $url.'/GetAllCustomerAccount',
@@ -150,7 +150,7 @@ trait Holo{
 
         $curl = curl_init();
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
 
         curl_setopt_array($curl, array(
           CURLOPT_URL => $url.'/GetAllAccount',
@@ -195,7 +195,7 @@ trait Holo{
 
         $curl = curl_init();
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
 
         curl_setopt_array($curl, array(
           CURLOPT_URL => $url.'/getAllHolooProductsWithCategory/'.$category_key,
@@ -236,7 +236,7 @@ trait Holo{
 
     public function addProductsWebhook($user,$products){
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+
         $hookMsgValue=[];
         $hookMsgType=[];
         foreach($products as $product){
@@ -281,7 +281,7 @@ trait Holo{
 
     public function addInvoicesWebhook($user,$invoices){
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
 
         foreach($invoices as $invoice){
             $json = json_encode ($invoice->invoice);

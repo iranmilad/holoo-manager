@@ -39,7 +39,7 @@ class UpdateController extends Controller
 
         $curl = curl_init();
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
         curl_setopt_array($curl, array(
           CURLOPT_URL => $url.'/updateAllProductFromHolooToWC',
           CURLOPT_RETURNTRANSFER => true,
@@ -96,7 +96,7 @@ class UpdateController extends Controller
 
         $curl = curl_init();
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
         curl_setopt_array($curl, array(
           CURLOPT_URL => $url.'/wcAddAllHolooProductsCategory',
           CURLOPT_RETURNTRANSFER => true,
@@ -149,7 +149,7 @@ class UpdateController extends Controller
 
         $curl = curl_init();
         $url = env('SERVICE_URL');
-        $token = env('SERVICE_TOKEN');
+        $token = $user->dashboardToken;
         curl_setopt_array($curl, array(
           CURLOPT_URL => $url.'/getProductCategory',
           CURLOPT_RETURNTRANSFER => true,
