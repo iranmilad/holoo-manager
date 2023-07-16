@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Traits;
+namespace app\Traits;
 
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+
 trait Holo{
 
 
