@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\Messages;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopicsController;
@@ -143,7 +144,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class,"show"])->name("home");
 });
 
-
+Route::get('/updateapp', function()
+{
+    \Artisan::call('dump-autoload');
+    echo 'dump-autoload complete';
+});
 
 Route::get('/login', [LoginController::class,"show"])->name("show_login");
 Route::post('/login', [LoginController::class,"login"])->name("login");
