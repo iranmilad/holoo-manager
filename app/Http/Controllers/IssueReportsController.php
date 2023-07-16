@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\WC;
+use app\Traits\WC;
+use app\Traits\Holo;
 use App\Models\User;
-use App\Traits\Holo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
