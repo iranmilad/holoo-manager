@@ -1,0 +1,78 @@
+/* 
+  Author: Farhad Bagheri
+  Github: https://github.com/cfarhad
+*/
+
+.fill-cyan {
+  fill: #06b6d4;
+}
+
+.fill-sky {
+  fill: #0ea5e9;
+}
+
+.fill-blue {
+  fill: #3b82f6;
+}
+
+.fill-indigo {
+  fill: #6366f1;
+}
+
+.fill-violet {
+  fill: #8b5cf6;
+}
+
+.fill-pink {
+  fill: #ec4899;
+}
+
+.fill-rose {
+  fill: #f43f5e;
+}
+
+.fill-green {
+  fill: #22c55e;
+}
+
+.fill-orange {
+  fill: #f59e0b;
+}
+
+.card-icons {
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+
+@media screen and (max-width: 576px) {
+  .card-icons {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.select2-results__option--selected{
+  padding-right: 30px !important;
+}
+
+.select2-selection__choice__display{
+  margin-right: 15px !important;
+}
+
+.dow no-highlight{
+  margin: 0 5px !important;
+}
+
+.dataTables_empty{
+  text-align: center;
+}
+
+.select2-selection__clear{
+  position: absolute !important;
+  right: 20px !important;
+}
+
+.select2-selection__rendered{
+  padding-right: 30px !important;
+}
