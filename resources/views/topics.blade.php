@@ -19,7 +19,7 @@
                 <select name="holo[{{ $wcPaymentGateway->id }}][number]" class="form-select form-select-solid" data-control="select2" data-close-on-select="true" data-placeholder="انتخاب کنید" data-allow-clear="false">
                 @foreach ($holoAccounts as $account)
                         @php
-                            $selected = $user->config->payment->{$wcPaymentGateway->id}->number==$account->sarfasl_Code;
+                            $selected = (property_exists($user->config->payment,$wcPaymentGateway->id)) ? $user->config->payment->{$wcPaymentGateway->id}->number==$account->sarfasl_Code : false;
                         @endphp
                         <option value="{{ $account->sarfasl_Code }}" @if($selected) selected @endif>{{ $account->sarfasl_Name }}</option>
                 @endforeach
