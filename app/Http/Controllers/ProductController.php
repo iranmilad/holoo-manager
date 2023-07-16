@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\WC;
+use App\Traits\Holo\Holo;
+use App\Traits\Wc\Wc;
 use App\Models\User;
-use App\Traits\Holo;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;

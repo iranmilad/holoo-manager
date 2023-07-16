@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Traits;
+namespace App\Traits\Holo;
 
 use Illuminate\Support\Facades\Log;
 

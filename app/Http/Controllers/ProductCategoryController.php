@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\WC;
+
+use App\Traits\Wc\Wc;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;

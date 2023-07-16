@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use app\Traits\WC;
-use app\Traits\Holo;
+use App\Traits\Holo\Holo;
+use App\Traits\Wc\Wc;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IssueReportsController extends Controller
 {
-    use WC;
+    use Wc;
     use Holo;
 
     /**

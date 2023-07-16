@@ -1,9 +1,9 @@
 <?php
 
-namespace app\Traits;
+namespace App\Traits\Wc;
 
 
-trait WC{
+trait Wc{
 
     /**
      * @param User $user
