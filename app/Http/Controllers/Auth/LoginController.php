@@ -53,7 +53,7 @@ class LoginController extends Controller
             curl_close($curl);
             // Decode the JSON response
             $responseData = json_decode($response, true);
-
+            dd($responseData);
             // Check if the response is successful
             if ($responseData['responseCode'] == 200) {
                 // Get the token from the response
