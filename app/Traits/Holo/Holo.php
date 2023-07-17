@@ -312,7 +312,7 @@ trait Holo{
         return true;
     }
 
-    public function getJobInQueue($user):object {
+    public function getJobInQueue($user):array {
 
 
         //$config = json_decode($user->config);
