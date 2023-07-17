@@ -114,7 +114,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/technicalreporting', [TechnicalReportingController::class,"index"])->name("technicalreporting.index");
     Route::get('/technicalreporting/sendWebhook/{id}', [TechnicalReportingController::class,"sendWebhook"])->name("technicalreporting.sendWebhook");
-
+    Route::get('/technicalreporting/queueFlush', [TechnicalReportingController::class,"queueFlush"])->name("technicalreporting.queueFlush");
 
     Route::get('/subscriptions', [SubscriptionsController::class,"show"])->name("subscriptions.show");
 
@@ -144,11 +144,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class,"show"])->name("home");
 });
 
-Route::get('/updateapp', function()
-{
-    \Artisan::call('dump-autoload');
-    echo 'dump-autoload complete';
-});
+
 
 Route::get('/login', [LoginController::class,"show"])->name("show_login");
 Route::post('/login', [LoginController::class,"login"])->name("login");

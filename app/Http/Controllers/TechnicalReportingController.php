@@ -84,4 +84,51 @@ class TechnicalReportingController extends Controller
 
     }
 
+
+    public function queueFlush()
+    {
+        $user= Auth::user();
+
+        $user = User::where(['id'=>$user->id,])
+        ->first();
+
+
+        $curl = curl_init();
+        $url = env('SERVICE_URL');
+        $token = $user->dashboardToken;
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => $url.'/queueFlush',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+
+          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$token
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $responseData = json_decode($response, true); // Decode the JSON response
+
+        $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
+        curl_close($curl);
+        if ($responseCode == 200) {
+            $message = $responseData['message']; // Get the "message" value from the response
+            return redirect()->back()->with('success', [$message,]);
+        }
+        elseif(isset($responseData['message'])){
+            $message = $responseData['message']; // Get the "message" value from the response
+            return redirect()->back()->with('alert', $message);
+        }
+        else{
+            return redirect()->back()->with('alert', 'خطای عدم دسترسی به سرویس کلاد');
+        }
+    }
+
 }

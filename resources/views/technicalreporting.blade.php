@@ -136,13 +136,26 @@
             <tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
               <th class="p-0 pb-3 min-w-175px text-start">سرویس</th>
               <th class="p-0 pb-3 min-w-100px text-start">ظرفیت در انتظار</th>
+              <th class="p-0 pb-3 min-w-100px text-start">عملیات</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($queues as $queue)
+              @foreach ($queues as $queue)
+              @php
+                $reset=false;
+                $myString="user_server_23";
+                if ( strstr( $queue->name, 'user' ) or $user->id==1 ) {
+                    $reset=true;
+                }
+              @endphp
             <tr>
               <td class="text-start"  style="direction: ltr;">{{ $queue->name }}</td>
               <td class="text-start"  style="direction: ltr;">{{ $queue->count }}</td>
+              @if ($reset)
+              <td class="text-start"><a href="/technicalreporting/queueFlush">پاک کردن عملیات</a></td>
+              @else
+              <td class="text-start"></td>
+              @endif
             </tr>
             @endforeach
           </tbody>
