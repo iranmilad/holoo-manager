@@ -120,6 +120,38 @@
   </div>
   <!-- END:CARD -->
 
+  <!-- START:CARD -->
+  <div class="card mb-5 mb-xl-10">
+    <div class="card-header border-0">
+      <div class="card-title m-0">
+        <h3 class="fw-bold m-0">گزارش پردازش</h3>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="d-flex flex-column justify-content-center container-fluid">
+        <!-- START:TABLE -->
+        <table id="technicalreporting_table_3" class="table table-striped table-row-bordered gy-5 gs-7">
+          <thead>
+
+            <tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
+              <th class="p-0 pb-3 min-w-175px text-start">سرویس</th>
+              <th class="p-0 pb-3 min-w-100px text-start">ظرفیت در انتظار</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($queues as $queue)
+            <tr>
+              <td class="text-start"  style="direction: ltr;">{{ $queue->name }}</td>
+              <td class="text-start"  style="direction: ltr;">{{ $queue->count }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        <!-- END:TABLE -->
+      </div>
+    </div>
+  </div>
+  <!-- END:CARD -->
 
   @section('js')
   <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>

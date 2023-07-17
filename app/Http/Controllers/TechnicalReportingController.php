@@ -6,12 +6,16 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Invoice;
 use App\Models\Webhook;
+use App\Traits\Holo\Holo;
+
 use Illuminate\Http\Request;
 use App\Models\ProductRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Queue;
 
 class TechnicalReportingController extends Controller
 {
+    use Holo;
     /**
      * Display a listing of the resource.
      */
@@ -28,8 +32,10 @@ class TechnicalReportingController extends Controller
 
         $requests = ProductRequest::where(['user_id'=>$user->id,])->orderByDesc('updated_at')->get();
 
+        $queues=$this->getJobInQueue($user);
 
-        return view('technicalreporting', compact('webhooks','user','invoices','requests'));
+
+        return view('technicalreporting', compact('webhooks','user','invoices','requests',"queues"));
     }
 
     public function sendWebhook($id)
