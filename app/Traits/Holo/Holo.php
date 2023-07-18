@@ -89,7 +89,10 @@ trait Holo{
             $responseData = json_decode($response, true); // Decode the JSON response
             log::info($responseData);
             $responseData =$responseData["data"]['product'];
+            if($responseData!=null)
             $count=count($responseData);
+            else
+            $count=0;
         }
 
         return ["count"=>$count,"response"=>$responseCode];
