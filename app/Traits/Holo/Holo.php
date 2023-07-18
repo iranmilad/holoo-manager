@@ -134,7 +134,6 @@ trait Holo{
         $count=0;
         if ($responseCode == 200) {
             $response = $responseData['response'];
-            $responseData = json_decode($response, true); // Decode the JSON response
             log::info($responseData);
             $responseData =$responseData["result"];
             if($responseData!=null)
