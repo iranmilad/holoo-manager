@@ -99,6 +99,53 @@ trait Holo{
 
     }
 
+    public function testHoloCategorys($user):array {
+
+
+        //$config = json_decode($user->config);
+        $config = $user->config;
+
+        $curl = curl_init();
+        $url = env('SERVICE_URL');
+        $token = $user->dashboardToken;
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => $url.'/getProductCategory',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$token
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $responseData = json_decode($response, true); // Decode the JSON response
+
+        $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
+        curl_close($curl);
+
+        $count=0;
+        if ($responseCode == 200) {
+            $response = $responseData['response'];
+            $responseData = json_decode($response, true); // Decode the JSON response
+            log::info($responseData);
+            $responseData =$responseData["result"];
+            if($responseData!=null)
+            $count=count($responseData);
+            else
+            $count=0;
+        }
+
+        return ["count"=>$count,"response"=>$responseCode];
+
+    }
+
     public function testHoloCustomerAccount($user):array {
 
 

@@ -33,6 +33,28 @@
         <!-- START:ITEM -->
         <div class="row my-3">
           <div class="col-10">
+          <span> دریافت گروه بندی از کلاد</span>
+          </div>
+            @if ($cloud_category_count['count']>0)
+            <div class="col-2">
+                <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="  {{ $cloud_category_count['count'] }} محصول با موفقیت دریافت شدند">
+                <span class="path1"></span>
+                <span class="path2"></span>
+                </i>
+            </div>
+            @else
+            <div class="col-2">
+                <i class="ki-duotone ki-cross-circle fs-1 text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title=" هیچ دسته بندی برای کاربر یافت نشد یا دسترسی به کلاد دچار اختلال است خطای بازگشتی دارای کد {{ $cloud_category_count['response'] }} است">
+                <span class="path1"></span>
+                <span class="path2"></span>
+                </i>
+            </div>
+            @endif
+        </div>
+        <!-- END:ITEM -->
+        <!-- START:ITEM -->
+        <div class="row my-3">
+          <div class="col-10">
             <span>اعتبار لایسنس افزونه</span>
           </div>
           @if ($user->active==true)

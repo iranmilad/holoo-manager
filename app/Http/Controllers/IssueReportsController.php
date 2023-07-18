@@ -36,9 +36,9 @@ class IssueReportsController extends Controller
         $cloud_account_count=$this->testHoloAccounts($user);
         $cloud_product_count = $this->testHoloProducts($user);
         $cloud_customer_count = $this->testHoloCustomerAccount($user);
+        $cloud_category_count = $this->testHoloCategorys($user);
 
-
-        return view('issuereporting', compact('user','wc_category','wc_products','wc_response','wc_time','validDomain','cloud_product_count','cloud_account_count','cloud_customer_count'));
+        return view('issuereporting', compact('user','wc_category','wc_products','wc_response','wc_time','validDomain','cloud_product_count','cloud_account_count','cloud_customer_count','cloud_category_count'));
     }
 
 }
