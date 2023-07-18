@@ -37,7 +37,7 @@
           </div>
             @if ($cloud_category_count['count']>0)
             <div class="col-2">
-                <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="  {{ $cloud_category_count['count'] }} محصول با موفقیت دریافت شدند">
+                <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="  {{ $cloud_category_count['count'] }} گروه بندی با موفقیت دریافت شدند">
                 <span class="path1"></span>
                 <span class="path2"></span>
                 </i>
