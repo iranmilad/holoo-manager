@@ -117,7 +117,8 @@ trait Holo{
           CURLOPT_TIMEOUT => 0,
           CURLOPT_FOLLOWLOCATION => true,
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_POSTFIELDS =>json_encode($config), // convert data array to JSON
+          CURLOPT_CUSTOMREQUEST => 'POST',
           CURLOPT_HTTPHEADER => array(
             'Content-Type: application/json',
             'Authorization: Bearer '.$token
