@@ -87,7 +87,7 @@ trait Holo{
         if ($responseCode == 200) {
             $response = $responseData['response'];
             $responseData = json_decode($response, true); // Decode the JSON response
-            log::info($responseData);
+            //log::info($responseData);
             $responseData =$responseData["data"]['product'];
             if($responseData!=null)
             $count=count($responseData);
@@ -133,9 +133,9 @@ trait Holo{
 
         $count=0;
         if ($responseCode == 200) {
+            //log::info($responseData);
             $response = $responseData['response'];
-            log::info($responseData);
-            $responseData =$responseData["result"];
+            $responseData =$response["result"];
             if($responseData!=null)
             $count=count($responseData);
             else
@@ -323,7 +323,7 @@ trait Holo{
         ));
 
         $response = curl_exec($curl);
-        log::info($response);
+        //log::info($response);
 
         return true;
     }
@@ -354,7 +354,7 @@ trait Holo{
             ));
 
             $response = curl_exec($curl);
-            log::info($response);
+            //log::info($response);
 
         }
 
