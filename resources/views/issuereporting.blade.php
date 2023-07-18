@@ -230,7 +230,7 @@
           <div class="col-10">
             <span>سرعت دریافت کالاها از ووکامرس</span>
           </div>
-            @if ($wc_time< 3 )
+            @if ($wc_time< 10 )
             <div class="col-2">
                 <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="سرعت پاسخ دهی هاست شما مطلوب است">
                 <span class="path1"></span>
