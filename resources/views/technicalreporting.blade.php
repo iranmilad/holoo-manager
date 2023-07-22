@@ -61,7 +61,7 @@
           <tbody>
           @foreach ($invoices as $invoice)
             <tr>
-              <td class="text-start" style="direction: ltr;">{{ $invoice->created_at }}</td>
+              <td class="text-start" style="direction: ltr;">{{ $invoice->updated_at }}</td>
               <td class="text-start">{{ $invoice->invoiceId }}</td>
               <td class="text-start">{{ $invoice->invoiceStatus=='pending' ? 'پیش فاکتور' : 'فاکتور'}}</td>
               <td class="text-start">
