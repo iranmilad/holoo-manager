@@ -18,7 +18,7 @@
                 <th class="p-0 pb-3 min-w-100px text-start">زمان</th>
                 <th class="p-0 pb-3 min-w-175px text-start">کد کالا</th>
 
-                <th class="p-0 pb-3 min-w-100px text-start">وضعیت</th>
+                <th class="p-0 pb-3 min-w-100px text-start">نوع</th>
                 <th class="p-0 pb-3 min-w-100px text-start">عملیات</th>
             </tr>
           </thead>
@@ -27,14 +27,7 @@
                 <tr>
                 <td class="text-start" style="direction: ltr;">{{ $webhook->created_at }}</td>
                 <td class="text-start">{{ Str::limit($webhook->content["MsgValue"], 100) ?? null }}</td>
-
-                <td class="text-start">
-                    <i class="ki-duotone ki-{{ $webhook->state == 0 ? 'cross' : 'checked' }}-circle fs-1 {{ $webhook->state == 0 ? 'text-danger' : 'text-success' }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $webhook->state == 0 ? 'Failure' : 'Success' }}"></i>
-
-                    <span class="path1"></span>
-                    <span class="path2"></span>
-                    </i>
-                </td>
+                <td class="text-start">{{ $webhook->content['Table'] }}</td>
                 <td class="text-start"><a href="/technicalreporting/sendWebhook/{{ $webhook->id }}">ارسال مجدد</a></td>
                 </tr>
             @endforeach
