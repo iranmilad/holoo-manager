@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Category;
 
+use App\Traits\Holo\Holo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
 
 class UpdateController extends Controller
 {
-
+    use Holo;
     /**
      * Display a listing of the resource.
      */
@@ -70,12 +73,12 @@ class UpdateController extends Controller
 
 
             $message = $responseData['message']; // Get the "message" value from the response
-            return redirect()->back()->with('alert', $message);
+            return redirect()->back()->with('error', $message);
         }
         else{
 
 
-            return redirect()->back()->with('alert', 'خطای عدم دسترسی به سرویس کلاد');
+            return redirect()->back()->with('error', 'خطای عدم دسترسی به سرویس کلاد');
         }
 
 
@@ -124,10 +127,10 @@ class UpdateController extends Controller
         }
         elseif(isset($responseData['message'])){
             $message = $responseData['message']; // Get the "message" value from the response
-            return redirect()->back()->with('alert', $message);
+            return redirect()->back()->with('error', $message);
         }
         else{
-            return redirect()->back()->with('alert', 'خطای عدم دسترسی به سرویس کلاد');
+            return redirect()->back()->with('error', 'خطای عدم دسترسی به سرویس کلاد');
         }
 
 
@@ -190,13 +193,41 @@ class UpdateController extends Controller
         }
         elseif(isset($responseData['message'])){
             $message = $responseData['message']; // Get the "message" value from the response
-            return redirect()->back()->with('alert', $message);
+            return redirect()->back()->with('error', $message);
         }
         else{
-            return redirect()->back()->with('alert', 'خطای عدم دسترسی به سرویس کلاد');
+            return redirect()->back()->with('error', 'خطای عدم دسترسی به سرویس کلاد');
         }
     }
 
+    public function wcGetExcelProducts(Request $request,User $user){
+        $user= Auth::user();
+        // Update user config
+        $user = User::where(['id'=>$user->id,])
+        ->first();
+
+        $url=$this->getExcelProducts($user);
+        return Redirect::to($url);
+        //return Response::download('file_to_download', 'end_user_filename', ['location' => $url]);
+    }
+
+    public function wcGetExcelProducts2(Request $request,User $user){
+        $user= Auth::user();
+        // Update user config
+        $user = User::where(['id'=>$user->id,])
+        ->first();
+        if ($user->poshak==true){
+            $content=$this->getExcelProducts3($user);
+        }
+        else{
+            $content=$this->getExcelProducts2($user);
+        }
+        $response = response($content, 200, [
+            'Content-Type' => 'application/json',
+            'Content-Disposition' => 'attachment; filename="product.xls"',
+        ]);
+        return $response;
+    }
 
 
 }

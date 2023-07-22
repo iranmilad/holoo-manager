@@ -35,21 +35,55 @@
           </a>
         </div>
       </div>
-      <div class="separator my-5"></div>
-      <div class="row mb-6">
-        <div class="col-lg-9">
-          <p>دریافت کلیه کالاها از نرم افزار هلو </p>
+        <div class="separator my-5"></div>
+        <div class="row mb-6">
+            <div class="col-lg-9">
+                <p>دریافت کلیه کالاها از نرم افزار هلو </p>
+            </div>
+            <div class="col-lg-3">
+                <a class="btn btn-flex btn-sm fw-bold btn-primary" href="/updates/wcAddAllHolooProductsCategory">
+                    <i class="ki-duotone ki-fasten fs-6 me-1">
+                    <i class="path1"></i>
+                    <i class="path2"></i>
+                    </i>
+                    دریافت  محصولات
+                </a>
+            </div>
         </div>
-        <div class="col-lg-3">
-        <a class="btn btn-flex btn-sm fw-bold btn-primary" href="/updates/wcAddAllHolooProductsCategory">
-            <i class="ki-duotone ki-fasten fs-6 me-1">
-              <i class="path1"></i>
-              <i class="path2"></i>
-            </i>
-            دریافت  محصولات
-        </a>
+
+        <div class="separator my-5"></div>
+        <div class="row mb-6">
+            <div class="col-lg-9">
+                <p>خروجی محصولات با گروه بندی</p>
+            </div>
+            <div class="col-lg-3">
+                <a class="btn btn-flex btn-sm fw-bold btn-primary"  target="_blank" href="/updates/wcGetExcelProducts">
+                    <i class="ki-duotone ki-fasten fs-6 me-1">
+                    <i class="path1"></i>
+                    <i class="path2"></i>
+                    </i>
+                    خروجی فایل محصولات
+                </a>
+            </div>
         </div>
-      </div>
+
+
+        <div class="separator my-5"></div>
+        <div class="row mb-6">
+            <div class="col-lg-9">
+                <p>خروجی محصولات بدون گروه بندی</p>
+            </div>
+            <div class="col-lg-3">
+                <a class="btn btn-flex btn-sm fw-bold btn-primary"  target="_blank" href="/updates/wcGetExcelProducts2">
+                    <i class="ki-duotone ki-fasten fs-6 me-1">
+                    <i class="path1"></i>
+                    <i class="path2"></i>
+                    </i>
+                    خروجی فایل محصولات
+                </a>
+            </div>
+        </div>
+
     </div>
   </div>
 </x-main>

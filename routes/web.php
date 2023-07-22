@@ -102,7 +102,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/updates/updateAllProductFromHolooToWC', [UpdateController::class,"updateAllProductFromHolooToWC"])->name("updateAllProductFromHolooToWC");
     Route::get('/updates/wcAddAllHolooProductsCategory', [UpdateController::class,"wcAddAllHolooProductsCategory"])->name("wcAddAllHolooProductsCategory");
     Route::get('/updates/getProductCategory', [UpdateController::class,"getProductCategory"])->name("getProductCategory");
-
+    Route::get('/updates/wcGetExcelProducts', [UpdateController::class,"wcGetExcelProducts"])->name("wcGetExcelProducts");
+    Route::get('/updates/wcGetExcelProducts2', [UpdateController::class,"wcGetExcelProducts2"])->name("wcGetExcelProducts2");
 
     Route::get('/productscategory', [ProductCategoryController::class,"show"])->name("show_productscategory");
     Route::post('/productscategory', [ProductCategoryController::class,"update"])->name("update_productscategory");

@@ -75,10 +75,10 @@ class TechnicalReportingController extends Controller
         }
         elseif(isset($responseData['message'])){
             $message = $responseData['message']; // Get the "message" value from the response
-            return redirect()->back()->with('alert', $message);
+            return redirect()->back()->with('error', $message);
         }
         else{
-            return redirect()->back()->with('alert', 'خطای عدم دسترسی به سرویس کلاد');
+            return redirect()->back()->with('error', 'خطای عدم دسترسی به سرویس کلاد');
         }
 
 
@@ -124,10 +124,10 @@ class TechnicalReportingController extends Controller
         }
         elseif(isset($responseData['message'])){
             $message = $responseData['message']; // Get the "message" value from the response
-            return redirect()->back()->with('alert', $message);
+            return redirect()->back()->with('error', $message);
         }
         else{
-            return redirect()->back()->with('alert', 'خطای عدم دسترسی به سرویس کلاد');
+            return redirect()->back()->with('error', 'خطای عدم دسترسی به سرویس کلاد');
         }
     }
 

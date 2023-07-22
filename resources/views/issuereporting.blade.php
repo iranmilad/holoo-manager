@@ -137,16 +137,16 @@
           <div class="col-10">
             <span>دریافت کانفیگ از کاربر</span>
           </div>
-            @if ($user->config!=null)
+            @if ($user->config!=null and $user->consumerKey!=null)
             <div class="col-2">
-                <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="کانفیگ کاربر با موفقیت دریافت شده است">
+                <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="کانفیگ و اطلاعات ووکامرس کاربر با موفقیت دریافت شده است">
                 <span class="path1"></span>
                 <span class="path2"></span>
                 </i>
             </div>
             @else
             <div class="col-2">
-                <i class="ki-duotone ki-cross-circle fs-1 text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="کانفیگ دریافت نشده است احتمالا دیتای کاربر به سرور نمیرسد از شرکت هاست خود بخواهید دسترسی هاست شما را روی پورت 443 باز نماید">
+                <i class="ki-duotone ki-cross-circle fs-1 text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="کانفیگ یا اطلاعات ووکامرس دریافت نشده است احتمالا دیتای کاربر به سرور نمیرسد از شرکت هاست خود بخواهید دسترسی هاست شما را روی پورت 443 باز نماید">
                 <span class="path1"></span>
                 <span class="path2"></span>
                 </i>

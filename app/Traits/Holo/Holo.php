@@ -405,6 +405,102 @@ trait Holo{
 
     }
 
+    public function getExcelProducts($user) {
 
 
+        //$config = json_decode($user->config);
+
+        $curl = curl_init();
+        $url = env('SERVICE_URL');
+        $token = $user->dashboardToken;
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => $url.'/wcGetExcelProducts',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+
+          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$token
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $responseData = json_decode($response, true); // Decode the JSON response
+
+        $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
+        curl_close($curl);
+
+        if ($responseCode == 200) {
+            $response = $responseData['response']['result']['url'];
+            return $response;
+        }
+
+
+    }
+    public function getExcelProducts2($user) {
+
+
+        //$config = json_decode($user->config);
+
+        $curl = curl_init();
+        $url = env('SERVICE_URL');
+        $token = $user->dashboardToken;
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://laravel.clawar-services.org/liveWcGetExcelProducts2/'.$user->id,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+
+          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$token
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        return $response;
+
+
+    }
+    public function getExcelProducts3($user) {
+
+
+        //$config = json_decode($user->config);
+
+        $curl = curl_init();
+        $url = env('SERVICE_URL');
+        $token = $user->dashboardToken;
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://laravel.clawar-services.org/liveWcGetExcelProducts3/'.$user->id,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+
+          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$token
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        return $response;
+
+
+    }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
+
 
 class SettingController extends Controller
 {
@@ -83,6 +85,11 @@ class SettingController extends Controller
             $config->product_stock_field = $request->input('config.product_stock_field');
             $config->save_sale_invoice = $request->input('config.save_sale_invoice');
             $config->save_pre_sale_invoice = $request->input('config.save_pre_sale_invoice');
+            $config->update_product_stock = $request->input('config.update_product_stock');
+            $config->update_product_price = $request->input('config.update_product_price');
+            $config->update_product_name = $request->input('config.update_product_name');
+            $config->insert_new_product = $request->input('config.insert_new_product');
+            $config->invoice_items_no_holo_code = $request->input('config.invoice_items_no_holo_code');
 
             #dd(json_encode($config));
             $user->config = json_encode($config);
