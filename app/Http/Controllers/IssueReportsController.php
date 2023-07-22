@@ -18,6 +18,8 @@ class IssueReportsController extends Controller
      */
     public function show(User $user)
     {
+        ini_set('max_execution_time', 300);
+        ini_set("memory_limit", "1G");
         $user= Auth::user();
         $user->config=json_decode($user->config);
 
@@ -33,8 +35,9 @@ class IssueReportsController extends Controller
             $validDomain=false;
         }
 
-        $cloud_account_count=$this->testHoloAccounts($user);
         $cloud_product_count = $this->testHoloProducts($user);
+        //return $cloud_product_count;
+        $cloud_account_count=$this->testHoloAccounts($user);
         $cloud_customer_count = $this->testHoloCustomerAccount($user);
         $cloud_category_count = $this->testHoloCategorys($user);
 
