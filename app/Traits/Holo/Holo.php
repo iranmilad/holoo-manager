@@ -100,6 +100,93 @@ trait Holo{
 
     }
 
+    public function testPage1HolooProducts($user):array {
+
+
+        //$config = json_decode($user->config);
+        $config = $user->config;
+
+        $curl = curl_init();
+        $url = env('SERVICE_URL');
+        $token = $user->dashboardToken;
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => $url.'/getPage1HolooProducts',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$token
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $responseData = json_decode($response, true); // Decode the JSON response
+
+        $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
+        curl_close($curl);
+
+        $count=0;
+        if ($responseCode == 200) {
+            $response = $responseData['response'];
+            $responseData = json_decode($response, true); // Decode the JSON response
+            //log::info($responseData);
+            if($responseData!=null and $responseData["data"]!=null and $responseData["data"]['product']!=null){
+              $responseData =$responseData["data"]['product'];
+              $count=count($responseData);
+            }
+            else
+            $count=0;
+        }
+
+        return ["count"=>$count,"response"=>$responseCode];
+
+    }
+
+    public function testProductsPagingCount($user):array {
+
+
+        //$config = json_decode($user->config);
+        $config = $user->config;
+
+        $curl = curl_init();
+        $url = env('SERVICE_URL');
+        $token = $user->dashboardToken;
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => $url.'/getProductsPagingCount',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'GET',
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json',
+            'Authorization: Bearer '.$token
+          ),
+        ));
+
+        $response = curl_exec($curl);
+        $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
+        curl_close($curl);
+
+        $count=0;
+        if ($responseCode == 200) {
+            $count=$response;
+        }
+
+
+        return ["count"=>$count,"response"=>$responseCode];
+
+    }
+
     public function testHoloCategorys($user):array {
 
 

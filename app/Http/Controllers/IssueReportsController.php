@@ -34,8 +34,12 @@ class IssueReportsController extends Controller
         if (!preg_match("~^(?:https?://)~", $domain)) {
             $validDomain=false;
         }
+        $testpage1=$this->testPage1HolooProducts($user);
+        $cloud_product_count = $this->testProductsPagingCount($user);
 
-        $cloud_product_count = $this->testHoloProducts($user);
+        if ($testpage1["count"]==0 and $cloud_product_count["count"]>0)
+        $cloud_product_count["count"] = 0;
+
         //return $cloud_product_count;
         $cloud_account_count=$this->testHoloAccounts($user);
         $cloud_customer_count = $this->testHoloCustomerAccount($user);
