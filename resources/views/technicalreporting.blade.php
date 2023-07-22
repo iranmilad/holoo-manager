@@ -84,7 +84,7 @@
   <div class="card mb-5 mb-xl-10">
     <div class="card-header border-0">
       <div class="card-title m-0">
-        <h3 class="fw-bold m-0">گزارش بروزرسانی</h3>
+        <h3 class="fw-bold m-0">گزارش بروزرسانی (ویژه کاربران دارای سرویس اختصاصی)</h3>
       </div>
     </div>
     <div class="card-body">
@@ -117,7 +117,7 @@
   <div class="card mb-5 mb-xl-10">
     <div class="card-header border-0">
       <div class="card-title m-0">
-        <h3 class="fw-bold m-0">گزارش پردازش</h3>
+        <h3 class="fw-bold m-0">(ویژه کاربران دارای سرویس اختصاصی) گزارش پردازش</h3>
       </div>
     </div>
     <div class="card-body">
