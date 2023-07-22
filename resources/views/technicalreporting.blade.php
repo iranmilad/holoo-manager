@@ -72,7 +72,7 @@
               <td class="text-start">{{ $invoice->invoiceId }}</td>
               <td class="text-start">{{ $invoice->invoiceStatus=='pending' ? 'پیش فاکتور' : 'فاکتور'}}</td>
               <td class="text-start">
-              <i class="ki-duotone ki-{{ $invoice->status != 'ثبت سفارش فروش انجام شد' ? 'cross' : 'checked' }}-circle fs-1 {{ $invoice->status != 'ثبت سفارش فروش انجام شد' ? 'text-danger' : 'text-success' }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $invoice->status }}"></i>
+              <i class="ki-duotone ki-{{ $invoice->status != 'ثبت سفارش فروش انجام شد' ? 'cross' : 'checked' }}-circle fs-1 {{ $invoice->status != 'ثبت سفارش فروش انجام شد' ? 'text-danger' : 'text-success' }}" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $invoice->status }}">
                   <span class="path1"></span>
                   <span class="path2"></span>
                 </i>
