@@ -140,7 +140,7 @@
             <div class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
               <!--begin::Copyright-->
               <div class="text-dark order-2 order-md-1">
-                <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">داشبورد مدیریت افزونه نیلا</a>
+                <a href="https://niladashboard.ir" target="_blank" class="text-gray-800 text-hover-primary">داشبورد مدیریت افزونه نیلا</a>
                 <span class="text-muted fw-semibold me-1">
                   <script>
                     document.write(new Date().getFullYear())
@@ -151,13 +151,13 @@
               <!--begin::Menu-->
               <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1 d-none">
                 <li class="menu-item">
-                  <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">درباره ی ما</a>
+                  <a href="https://niladashboard.ir/" target="_blank" class="menu-link px-2">درباره ی ما</a>
                 </li>
                 <li class="menu-item">
-                  <a href="https://rtl-theme.com" target="_blank" class="menu-link px-2">پشتیبانی</a>
+                  <a href="https://niladashboard.ir/" target="_blank" class="menu-link px-2">پشتیبانی</a>
                 </li>
                 <li class="menu-item">
-                  <a href="https://www.rtl-theme.com/metronic-admin-html-template/" target="_blank" class="menu-link px-2">خرید</a>
+                  <a href="https://niladashboard.ir/" target="_blank" class="menu-link px-2">خرید</a>
                 </li>
               </ul>
               <!--end::Menu-->
