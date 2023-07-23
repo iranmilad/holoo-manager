@@ -67,6 +67,7 @@ class UpdateController extends Controller
         if ($responseCode == 200) {
 
             $message = $responseData['message']; // Get the "message" value from the response
+            dd($message);
             return redirect()->back()->with('success', $message);
         }
         elseif(isset($responseData['message'])){
@@ -189,7 +190,7 @@ class UpdateController extends Controller
 
             //dd($wcCategory);
             $message = $responseData['message']; // Get the "message" value from the response
-            return redirect()->back()->with('success', [$message,]);
+            return redirect()->back()->with('success', $message);
         }
         elseif(isset($responseData['message'])){
             $message = $responseData['message']; // Get the "message" value from the response
