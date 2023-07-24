@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
                 }
 
 
-            })->name('send_sms_invoce_resived')->withoutOverlapping()->everyMinute()//->everyFifteenMinutes();
+            })->name('send_sms_invoce_resived')->withoutOverlapping()->everyMinute();//->everyFifteenMinutes();
     }
 
     /**
