@@ -40,7 +40,7 @@ class SendSmsJob implements ShouldQueue
         try{
 
 
-            $rcpt_nm = is_array($this->user->mobile) ? $this->user->mobile : explode( "," , $this->user->mobile );
+            $rcpt_nm = $this->user->mobile;
 
 
             $curl = curl_init();
@@ -57,7 +57,7 @@ class SendSmsJob implements ShouldQueue
               CURLOPT_POSTFIELDS =>'{
                 "originator": "'.env("SMS_PANNEL_FROM").'",
                 "recipients": [
-                    "'.$rcpt_nm[0].'"
+                    "'.$rcpt_nm.'"
                 ],
                 "message": "'.$this->message.'"
               }',
