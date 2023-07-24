@@ -45,11 +45,11 @@
 					<div class="fw-semibold">
                         @if($user->active==true and $user->poshak)
 
-						<h4 class="text-gray-900 fw-bold m-0">اشتراک وبسرویس فروشگاهی ویژه نیلا برای حساب شما فعال شده است</h4>
+						<h4 class="text-gray-900 fw-bold m-0">اشتراک افزونه فروشگاهی ویژه نیلا برای حساب شما فعال شده است</h4>
                         @elseif($user->active==true)
-                        <h4 class="text-gray-900 fw-bold m-0">اشتراک وبسرویس فروشگاهی نیلا برای حساب شما فعال شده است</h4>
+                        <h4 class="text-gray-900 fw-bold m-0">اشتراک افزونه فروشگاهی نیلا برای حساب شما فعال شده است</h4>
                         @else
-                        <h4 class="text-gray-900 fw-bold m-0">اشتراک وبسرویس شما به دلیل انقضا غیرفعال شده است</h4>
+                        <h4 class="text-gray-900 fw-bold m-0">اشتراک افزونه شما به دلیل انقضا غیرفعال شده است</h4>
                         @endif
 					</div>
 					<!--end::Content-->
