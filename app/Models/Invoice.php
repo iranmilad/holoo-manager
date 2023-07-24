@@ -12,4 +12,8 @@ class Invoice extends Model
     protected $casts = [
         'invoice' => 'json',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
