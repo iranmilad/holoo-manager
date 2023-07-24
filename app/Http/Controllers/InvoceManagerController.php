@@ -10,7 +10,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use Morilog\Jalali\CalendarUtils;
-use Illuminate\Support\Facades\Log;
+
 use Illuminate\Support\Facades\Auth;
 
 class InvoceManagerController extends Controller
