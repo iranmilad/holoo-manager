@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
                     $count=count($allInvoiceId);
                     $message = $count." سفارش فروش جدید در سایت شما دریافت شد. افزونه نیلا";
 
-                    SendSmsJob::dispatch((object)["queue_server"=>$user->queue_server,"id"=>$user->id,"mobile"=>$user->mobile,"name"=>$user->name],$message )->onConnection($user->queue_server)->onQueue("high");
+                    SendSmsJob::dispatch((object)["queue_server"=>$user->queue_server,"id"=>$user->id,"mobile"=>$user->mobile,"name"=>$user->name],$message )->onConnection("database")->onQueue("high");
                 }
 
 
