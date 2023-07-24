@@ -21,9 +21,10 @@ class Kernel extends ConsoleKernel
                 $startOfDay = now()->subMinutes(15);
                 $endOfDay = now();
 
-                $users = User::where('active', true)
+                $users = User::where(['active'=> true,'sms'=>1])
                 ->whereHas('invoices', function ($query) use ($startOfDay, $endOfDay) {
                     $query->whereIn('invoiceStatus', ['processing'])
+
                         ->where('status','ثبت سفارش فروش انجام شد')
                         ->whereBetween('created_at', [$startOfDay, $endOfDay]);
                 })
