@@ -96,8 +96,8 @@
           <thead>
 
             <tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
-              <th class="p-0 pb-3 min-w-175px text-start">تاریخ شروع</th>
-              <th class="p-0 pb-3 min-w-100px text-start">تاریخ پایان</th>
+              <th class="p-0 pb-3 min-w-auto text-start">تاریخ شروع</th>
+              <th class="p-0 pb-3 min-w-auto text-start">تاریخ پایان</th>
             </tr>
           </thead>
           <tbody>
