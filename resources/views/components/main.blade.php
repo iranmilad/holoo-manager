@@ -22,7 +22,7 @@
       <!--begin::Wrapper-->
       <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
         <!--begin::Sidebar-->
-        <div id="kt_app_sidebar" class="app-sidebar flex-column d-none" data-kt-drawer="true" data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
+        <div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true" data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
           <!--begin::Logo-->
           <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
             <!--begin::Logo image-->
@@ -45,9 +45,9 @@
             <div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper hover-scroll-overlay-y my-5" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer" data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px" data-kt-scroll-save-state="true" style="height: 726px;">
               <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expو="false">
                 <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <!-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion"> -->
                   <!--begin:Menu link-->
-                  <span class="menu-link">
+                  <!-- <span class="menu-link">
                     <span class="menu-icon">
                       <i class="ki-duotone ki-abstract-25 fs-2">
                         <span class="path1"></span>
@@ -56,41 +56,70 @@
                     </span>
                     <span class="menu-title">منو</span>
                     <span class="menu-arrow"></span>
-                  </span>
+                  </span> -->
                   <!--end:Menu link-->
                   <!--begin:Menu sub-->
-                  <div class="menu-sub menu-sub-accordion">
+                  <!-- <div class="menu-sub menu-sub-accordion"> -->
                     <!--begin:Menu item-->
-                    <div class="menu-item">
+                    <!-- <div class="menu-item"> -->
                       <!--begin:Menu link-->
-                      <a class="menu-link" href="./">
+                      <!-- <a class="menu-link" href="./">
                         <span class="menu-bullet">
                           <span class="bullet bullet-dot"></span>
                         </span>
                         <span class="menu-title">زیر منو</span>
-                      </a>
+                      </a> -->
                       <!--end:Menu link-->
-                    </div>
+                    <!-- </div> -->
                     <!--end:Menu item-->
-                  </div>
+                  <!-- </div> -->
                   <!--end:Menu sub-->
-                </div>
+                <!-- </div> -->
                 <!--end:Menu item-->
+
+            <!--begin:Array-->
+            <?php
+            $menu_items = [
+              ["href" => "settings", "title" => "تنظیمات", "img" => "./assets/media/icons/gear.png"],
+              ["href" => "updates", "title" => "بروزرسانی ها", "img" => "./assets/media/icons/updates.png"],
+              ["href" => "products", "title" => "بارگزاری محصولات", "img" => "./assets/media/icons/uploadproduct.png"],
+              ["href" => "/issuereporting", "title" => "گزارش گیری اشکالات", "img" => "./assets/media/icons/findoption.png"],
+              ["href" => "productscategory", "title" => "دسته بندی ها", "img" => "./assets/media/icons/blocks.png"],
+              ["href" => "topics", "title" => "سر فصل ها", "img" => "./assets/media/icons/task.png"],
+              ["href" => "subscriptions", "title" => "اشتراک", "img" => "./assets/media/icons/important.png"],
+              ["href" => "invoicesmanager", "title" => "مدیریت فاکتور ها", "img" => "./assets/media/icons/computer-monitor.png"],
+              ["href" => "technicalreporting", "title" => "گزارش تبادل داده", "img" => "./assets/media/icons/warning-sign.png"]
+            ];
+            ?>
+            <!--end:Array-->
+
+
+
+                <!--begin:Menu-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                @foreach ($menu_items as $item)
                 <!--begin:Menu item-->
                 <div class="menu-item">
-                  <!--begin:Menu link-->
-                  <a class="menu-link" href="/" target="_blank">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="{{ $item['href'] }}">
                     <span class="menu-icon">
-                      <i class="ki-duotone ki-rocket fs-2">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                      </i>
+                        <img src="{{ $item['img'] }}" height="25" width="25" class="" alt="">
+
                     </span>
-                    <span class="menu-title">منو</span>
-                  </a>
-                  <!--end:Menu link-->
+                    <span class="menu-title">{{ $item['title'] }}</span>
+                    </a>
+                    <!--end:Menu link-->
                 </div>
                 <!--end:Menu item-->
+                @endforeach
+                </div>
+                <!--end:Menu-->
+
+
+
+
+
+
               </div>
             </div>
             <!--end::Menu wrapper-->
