@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
 
             // run send sms queue for 15 minutes later invoice received
             $schedule->call(function () {
-
+                log::info("sms run job");
                 $startOfDay = now()->subMinutes(15);
                 $endOfDay = now();
 
