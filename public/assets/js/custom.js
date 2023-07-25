@@ -35,6 +35,13 @@ var InvoicesPicker = new KTBlockUI(document.getElementById("kt_datepicker_2"), {
     overlayClass: "rounded ",
 });
 
+var InvoicesSinglePicker = new KTBlockUI(
+    document.getElementById("invoicesTableContainer"),
+    {
+        overlayClass: "rounded ",
+    }
+);
+
 /**
  * Send Rows of invoices manager to server single
  * @param {Event} e
@@ -45,14 +52,11 @@ function InvoicesSingle(e) {
     e.preventDefault();
     e.stopPropagation();
     let parent = document.getElementById("invoicesTableContainer");
-    let blockUI = new KTBlockUI(parent, {
-        overlayClass: "rounded ",
-    });
     let tableInstance = $("#invoices_table1").DataTable();
     const trparent = e.target.closest("tr");
     const id = trparent.querySelectorAll("td")[1].innerText;
     const rowId = e.target.getAttribute("data-row-id");
-    //blockUI.block();
+    InvoicesSinglePicker.block();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -64,8 +68,8 @@ function InvoicesSingle(e) {
     })
         .done(function (data) {
             console.log(data.data);
-            blockUI.release();
-            blockUI.destroy();
+            InvoicesSinglePicker.release();
+            InvoicesSinglePicker.destroy();
             let each = data.data;
             let rowId = each.rowId;
             delete each.rowId;
@@ -90,7 +94,7 @@ function InvoicesSingle(e) {
             tableInstance.row(rowId).data(each).draw();
         })
         .fail(function () {
-            blockUI.release();
+            InvoicesSinglePicker.release();
             toastr.options = {
                 closeButton: true,
                 debug: false,
@@ -211,9 +215,6 @@ function InvoicesBatch(e) {
     e.preventDefault();
     e.stopPropagation();
     let parent = document.getElementById("invoicesTableContainer");
-    let blockUI = new KTBlockUI(parent, {
-        overlayClass: "rounded ",
-    });
     let tableInstance = $("#invoices_table1").DataTable();
     let checkboxes = document.querySelectorAll(
         '#invoices_table1 tbody [type="checkbox"]'
@@ -226,7 +227,7 @@ function InvoicesBatch(e) {
             ids.push({ id, rowId });
         }
     });
-    //blockUI.block();
+    InvoicesSinglePicker.block();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -258,11 +259,11 @@ function InvoicesBatch(e) {
                 hideMethod: "fadeOut",
             };
             toastr.success("درخواست با موفقیت دریافت شد", "پیام سیستم");
-            blockUI.release();
-            blockUI.destroy();
+            InvoicesSinglePicker.release();
+            InvoicesSinglePicker.destroy();
         })
         .fail(function () {
-            blockUI.release();
+            InvoicesSinglePicker.release();
             toastr.options = {
                 closeButton: true,
                 debug: false,
@@ -723,7 +724,6 @@ const InvoicesManager = (minDate, maxDate) => {
                 InvoicesPicker.block();
             }
             $.get(`/invoices/${dateStr}`).done((data) => {
-                console.log(data);
                 InvoicesPicker.release();
                 let realData = data.data;
                 dt.clear();
@@ -768,11 +768,7 @@ const InvoicesManager = (minDate, maxDate) => {
             {
                 targets: 4,
                 render: function (data) {
-                    if (data === 1) {
-                        return `<div class='badge badge-success fw-bold' data-status="1">ثبت شده</div>`;
-                    } else {
-                        return `<div class='badge badge-danger fw-bold' data-status="0">ثبت نشده</div>`;
-                    }
+                    return `<div class='badge badge-${data.type} fw-bold' data-status="0" data-bs-toggle="tooltip" data-bs-placement="top" title="${data.tooltip}">${data.title}</div>`
                 },
             },
             {

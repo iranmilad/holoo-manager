@@ -43,7 +43,11 @@ class InvoceManagerController extends Controller
                 "id"=> $invoice->invoiceId,
                 "name"=> $invoice->invoice["billing"]["first_name"]." ".$invoice->invoice["billing"]["last_name"],
                 "price" =>$invoice->invoice["total"],
-                "status" => ($invoice->status =="ثبت سفارش فروش انجام شد" ? 1 : 0),
+                "status" => (object)[
+                    "title"=>($invoice->status =="ثبت سفارش فروش انجام شد" ? "ثبت شده" : "ثبت نشده"),
+                    "type"=>($invoice->status =="ثبت سفارش فروش انجام شد" ? "success" : "danger"),
+                    "tooltip"=>$invoice->status,
+                ],
                 "date" => Jalalian::fromFormat('Y-m-d H:i:s', $invoice->created_at)->format('%A, %d %B %y')
             ];
         }
@@ -83,7 +87,11 @@ class InvoceManagerController extends Controller
             "id"=> $invoice->invoiceId,
             "name"=> $invoice->invoice["billing"]["first_name"]." ".$invoice->invoice["billing"]["last_name"],
             "price" =>$invoice->invoice["total"],
-            "status" => ($invoice->status =="ثبت سفارش فروش انجام شد" ? 1 : 0),
+            "status" => (object)[
+                "title"=>($invoice->status =="ثبت سفارش فروش انجام شد" ? "ثبت شده" : "ثبت نشده"),
+                "type"=>($invoice->status =="ثبت سفارش فروش انجام شد" ? "success" : "danger"),
+                "tooltip"=>$invoice->status,
+            ],
             "date" => Jalalian::fromFormat('Y-m-d H:i:s', $invoice->created_at)->format('%A, %d %B %y'),
             "rowId" => (int)$rowId
         ];
@@ -131,7 +139,11 @@ class InvoceManagerController extends Controller
                 "id"=> $invoice->invoiceId,
                 "name"=> $invoice->invoice["billing"]["first_name"]." ".$invoice->invoice["billing"]["last_name"],
                 "price" =>$invoice->invoice["total"],
-                "status" => ($invoice->status =="ثبت سفارش فروش انجام شد" ? 1 : 0),
+                "status" => (object)[
+                    "title"=>($invoice->status =="ثبت سفارش فروش انجام شد" ? "ثبت شده" : "ثبت نشده"),
+                    "type"=>($invoice->status =="ثبت سفارش فروش انجام شد" ? "success" : "danger"),
+                    "tooltip"=>$invoice->status,
+                ],
                 "date" => Jalalian::fromFormat('Y-m-d H:i:s', $invoice->created_at)->format('%A, %d %B %y'),
                 "rowId" => (int)$row->rowId
             ];
