@@ -792,6 +792,7 @@ const InvoicesManager = (minDate, maxDate) => {
         resetTable();
         toggleToolbars();
         initToggleToolbar();
+        $('[data-bs-toggle="tooltip"]').tooltip()
     });
 
     const toggleToolbars = () => {
