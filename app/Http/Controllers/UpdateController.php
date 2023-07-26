@@ -67,7 +67,7 @@ class UpdateController extends Controller
         if ($responseCode == 200) {
 
             $message = $responseData['message']; // Get the "message" value from the response
-            dd($message);
+            //dd($message);
             return redirect()->back()->with('success', $message);
         }
         elseif(isset($responseData['message'])){
