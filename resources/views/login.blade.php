@@ -18,8 +18,8 @@
 			if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
 				themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
 			} else {
-				if (localStorage.getitem("data-bs-theme") !== null) {
-					themeMode = localStorage.getitem("data-bs-theme");
+				if (localStorage.getItem("data-bs-theme") !== null) {
+					themeMode = localStorage.getItem("data-bs-theme");
 				} else {
 					themeMode = defaultThemeMode;
 				}
