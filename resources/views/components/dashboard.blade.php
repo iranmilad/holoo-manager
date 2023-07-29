@@ -42,7 +42,7 @@
                 <!--begin::Mobile logo-->
                 <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
                     <a href="/" class="d-lg-none">
-                        <img alt="Logo" src="assets/media/logos/default-small.svg" class="h-30px">
+                        <img alt="Logo" src="assets/media/logos/logo-without-name.svg" class="h-30px">
                     </a>
                 </div>
                 <!--end::Mobile logo-->
@@ -53,8 +53,8 @@
                         <!--begin::Menu-->
                         <div class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0" id="kt_app_header_menu" data-kt-menu="true">
                             <a href="/" class="d-flex align-items-center">
-                                <img alt="Logo" src="assets/media/logos/default-dark.svg" class="h-25px app-sidebar-logo-default">
-                                <img alt="Logo" src="assets/media/logos/default-small.svg" class="h-20px app-sidebar-logo-minimize">
+                                <img alt="Logo" src="assets/media/logos/logo-with-name.svg" class="h-25px app-sidebar-logo-default">
+                                <img alt="Logo" src="assets/media/logos/logo-without-name.svg" class="h-20px app-sidebar-logo-minimize">
                             </a>
                         </div>
                         <!--end::Menu-->

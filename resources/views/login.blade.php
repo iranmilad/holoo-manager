@@ -43,7 +43,7 @@
 						<!--begin::Logo-->
 						<div class="mb-13">
 							<a href="/" class="">
-								<img alt="Logo" src="assets/media/logos/custom-2.svg" class="h-40px" />
+								<img alt="Logo" src="assets/media/logos/logo-without-name.svg" class="h-40px" />
 							</a>
 						</div>
 						<!--end::Logo-->
