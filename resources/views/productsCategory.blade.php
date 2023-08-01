@@ -10,7 +10,7 @@
       <div class="card-body border-top p-9">
         <!--begin:: Group-->
         @php
-        $one_select==0;
+        $one_select=0;
         @endphp
         @foreach ($categories as $category)
         <div class="row mb-6">
