@@ -178,6 +178,8 @@ class UpdateController extends Controller
 
         if ($responseCode == 200) {
             $response = $responseData['response']["result"];
+            Category::where(['user_id'=> $user->id,])
+            ->delete();
             //dd($response);
             foreach($response as $key=>$holooCategory){
                 $categories = new Category();

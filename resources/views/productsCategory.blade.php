@@ -20,11 +20,12 @@
                 <!--begin::Col-->
                 <div class="col-lg-8">
                     <!--begin::Col-->
-                    <select class="form-select form-select-solid" name="holo[{{$category->code}}][]" data-control="select2" data-hide-search="true" data-close-on-select="false" data-placeholder="انتخاب کنید" data-allow-clear="true" multiple="multiple" data-minimum-results-for-search="Infinity" data-scrollAfterSelect="true">
-                        <option value=“” @if(isset($user->config->product_cat->{$category['code']}) && count($user->config->product_cat->{$category->code})==0) selected @endif>عدم ذخیره</option>
+                    <select class="form-select form-select-solid" name="holo[{{$category->code}}][]" data-control="select2" data-hide-search="true" data-close-on-select="false" data-placeholder="انتخاب کنید" data-allow-clear="true" multiple="multiple" data-minimum-results-for-search="Infinity">
+
                         @foreach ($wcCategories as $wcCategory)
                             @php
                                 $selected = isset($user->config->product_cat->{$category['code']}) && in_array($wcCategory->code, $user->config->product_cat->{$category->code});
+                                //$selected = 0;
                             @endphp
                             <option value="{{ $wcCategory->code }}" @if($selected) selected @endif>{{ $wcCategory->name }}</option>
                         @endforeach
@@ -46,3 +47,10 @@
     </form>
   </div>
 </x-main>
+
+@section("js")
+<script>
+$ (".toSelect2").val ([""]).trigger ("change");
+
+</script>
+@endsection

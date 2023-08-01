@@ -36,6 +36,7 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, User $user)
     {
+            //dd($request);
             $user= Auth::user();
              // Update user config
             $user = User::where(['id'=>$user->id,])
@@ -43,7 +44,7 @@ class ProductCategoryController extends Controller
 
             $config = json_decode($user->config);
             $product_cat = $request->input('holo');
-            log::info($product_cat);
+            //log::info($product_cat);
             //$product_cat = json_encode($product_cat);
             //dd($product_cat);
             $config->product_cat = $product_cat;
