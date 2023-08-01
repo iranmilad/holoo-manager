@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ProductCategoryController extends Controller
 {
@@ -42,6 +43,7 @@ class ProductCategoryController extends Controller
 
             $config = json_decode($user->config);
             $product_cat = $request->input('holo');
+            log::info($product_cat);
             //$product_cat = json_encode($product_cat);
             //dd($product_cat);
             $config->product_cat = $product_cat;
