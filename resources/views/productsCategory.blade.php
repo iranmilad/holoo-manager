@@ -9,9 +9,7 @@
         @csrf
       <div class="card-body border-top p-9">
         <!--begin:: Group-->
-        @php
-        $one_select=0;
-        @endphp
+
         @foreach ($categories as $category)
         <div class="row mb-6">
 
@@ -23,19 +21,16 @@
                 <div class="col-lg-8">
                     <!--begin::Col-->
                     <select class="form-select form-select-solid" name="holo[{{$category->code}}][]" data-control="select2" data-hide-search="true" data-close-on-select="false" data-placeholder="انتخاب کنید" data-allow-clear="true" multiple="multiple" data-minimum-results-for-search="Infinity">
+                        <option value="" @if(count($user->config->product_cat->{$category->code})==0) selected @endif>عدم ذخیره</option>
                         @foreach ($wcCategories as $wcCategory)
                             @php
-
                                 $selected = isset($user->config->product_cat->{$category['code']}) && in_array($wcCategory->code, $user->config->product_cat->{$category->code});
-                                if($one_select==0 and $selected==true){
-                                    $one_select =  true;
-                                }
                             @endphp
                             <option value="{{ $wcCategory->code }}" @if($selected) selected @endif>{{ $wcCategory->name }}</option>
                         @endforeach
-                        @if($one_select==0)
-                        <option value="" selected>عدم ذخیره</option>
-                        @endif
+
+
+
 
                     </select>
                     <!--end::Col-->
