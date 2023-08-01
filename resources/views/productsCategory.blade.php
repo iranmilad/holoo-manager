@@ -20,7 +20,7 @@
                 <div class="col-lg-8">
                     <!--begin::Col-->
                     <select class="form-select form-select-solid" name="holo[{{$category->code}}][]" data-control="select2" data-hide-search="true" data-close-on-select="false" data-placeholder="انتخاب کنید" data-allow-clear="true" multiple="multiple" data-minimum-results-for-search="Infinity">
-                        @if (!isset($user->config->product_cat->{$category['code']}) or $user->config->product_cat->{$category['code']}==null)
+                        @if (isset($user->config->product_cat->{$category['code']}) and $user->config->product_cat->{$category['code']}==null)
                             <option value="" selected>عدم ذخیره</option>
                         @endif
 
