@@ -46,10 +46,10 @@
                         @if($user->active==true and $user->poshak)
 
 						<h4 class="text-gray-900 fw-bold m-0">اشتراک افزونه فروشگاهی ویژه نیلا برای حساب شما فعال شده است</h4>
-                        <p>روز از اعتبار شما باقی مانده است {{ auth()->user()->days_since_registration }}</p>
+                        <p class="m-0">{{ auth()->user()->days_since_registration }} روز از اعتبار شما باقی مانده است </p>
                         @elseif($user->active==true)
                         <h4 class="text-gray-900 fw-bold m-0">اشتراک افزونه فروشگاهی نیلا برای حساب شما فعال شده است</h4>
-                        <p>روز از اعتبار شما باقی مانده است {{ auth()->user()->days_since_registration }}</p>
+                        <p class="m-0">{{ auth()->user()->days_since_registration }} روز از اعتبار شما باقی مانده است </p>
                         @else
                         <h4 class="text-gray-900 fw-bold m-0">اشتراک افزونه شما به دلیل انقضا غیرفعال شده است</h4>
                         @endif
