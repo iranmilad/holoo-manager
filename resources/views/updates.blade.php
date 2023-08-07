@@ -84,6 +84,22 @@
             </div>
         </div>
 
+        <div class="separator my-5"></div>
+        <div class="row mb-6">
+            <div class="col-lg-9">
+                <p>دریافت لینک دسترسی</p>
+            </div>
+            <div class="col-lg-3">
+                <a class="btn btn-flex btn-sm fw-bold btn-primary"  target="_blank" href='{{$user->siteUrl."/wp-json/wc/v3/products?consumer_key=".$user->consumer_key."&consumer_secret=".$user->consumer_secret}}'>
+                    <i class="ki-duotone ki-fasten fs-6 me-1">
+                    <i class="path1"></i>
+                    <i class="path2"></i>
+                    </i>
+                    لینک دسترسی با فروشگاه
+                </a>
+            </div>
+        </div>
+
     </div>
   </div>
 </x-main>
