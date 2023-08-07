@@ -90,7 +90,7 @@
                 <p>دریافت لینک دسترسی</p>
             </div>
             <div class="col-lg-3">
-                <a class="btn btn-flex btn-sm fw-bold btn-primary"  target="_blank" href='{{$user->siteUrl."/wp-json/wc/v3/products?consumer_key=".$user->consumer_key."&consumer_secret=".$user->consumer_secret}}'>
+                <a class="btn btn-flex btn-sm fw-bold btn-primary"  target="_blank" href='{{$user->siteUrl."/wp-json/wc/v3/products?consumer_key=".$user->consumerKey."&consumer_secret=".$user->consumerSecret}}'>
                     <i class="ki-duotone ki-fasten fs-6 me-1">
                     <i class="path1"></i>
                     <i class="path2"></i>
