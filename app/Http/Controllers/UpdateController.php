@@ -187,7 +187,7 @@ class UpdateController extends Controller
                 $categories->code = $holooCategory["m_groupcode"];
                 $categories->user_id = $user->id;
                 $categories->save();
-                sleep(1);
+                usleep(100);
             }
 
             //dd($wcCategory);
