@@ -161,7 +161,7 @@
 				                                    <div class="fw-bold d-flex align-items-center fs-5">{{ Auth::user()->name  }}
 				                                        <span class="badge badge-light-warning fw-bold fs-8 px-2 py-1 ms-2">{{ (Auth::user()->active==1)  ? "اشتراک فعال"  : "اشتراک منقضی" }}</span>
 				                                    </div>
-				                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">اشتراک افزونه نیلا</a>
+				                                    <a href="/subscriptions" class="fw-semibold text-muted text-hover-primary fs-7">اشتراک افزونه نیلا</a>
 				                                </div>
                                         <!--end::کاربرname-->
                                     </div>
