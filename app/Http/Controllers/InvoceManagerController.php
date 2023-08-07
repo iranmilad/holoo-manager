@@ -54,8 +54,6 @@ class InvoceManagerController extends Controller
         return (object)["data"=>$total];
     }
 
-
-
     /**
      * add one Invoice to wc.
      */
