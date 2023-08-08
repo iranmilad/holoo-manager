@@ -26,11 +26,11 @@ class TechnicalReportingController extends Controller
         $user = User::where(['id'=>$user->id,])
         ->first();
 
-        $webhooks= Webhook::whereDate('updated_at', Carbon::today())->where(['user_id'=>$user->id,])->sortBy('updated_at')->get() ;
+        $webhooks= Webhook::whereDate('updated_at', Carbon::today())->where(['user_id'=>$user->id,])->orderBy('updated_at')->get() ;
 
-        $invoices= Invoice::whereDate('updated_at', Carbon::today())->where(['user_id'=>$user->id,])->sortBy('updated_at')->get();
+        $invoices= Invoice::whereDate('updated_at', Carbon::today())->where(['user_id'=>$user->id,])->orderBy('updated_at')->get();
 
-        $requests = ProductRequest::where(['user_id'=>$user->id,])->sortBy('updated_at')->get();
+        $requests = ProductRequest::where(['user_id'=>$user->id,])->orderBy('updated_at')->get();
 
         $queues=$this->getJobInQueue($user);
 
