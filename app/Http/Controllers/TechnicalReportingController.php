@@ -71,7 +71,7 @@ class TechnicalReportingController extends Controller
         if ($responseCode == 200) {
 
             $message = $responseData['message']; // Get the "message" value from the response
-            return redirect()->back()->with('success', [$message,]);
+            return redirect()->back()->with('success', $message);
         }
         elseif(isset($responseData['message'])){
             $message = $responseData['message']; // Get the "message" value from the response
