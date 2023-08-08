@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Traits\Holo\Holo;
 use App\Traits\Wc\Wc;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class IssueReportsController extends Controller
@@ -35,15 +35,19 @@ class IssueReportsController extends Controller
             $validDomain=false;
         }
         $testpage1=$this->testPage1HolooProducts($user);
+        log::info('test holo page 1 product finish');
         $cloud_product_count = $this->testProductsPagingCount($user);
-
+        log::info('test holo product count finish');
         if ($testpage1["count"]==0 and $cloud_product_count["count"]>0)
         $cloud_product_count["count"] = 0;
 
         //return $cloud_product_count;
         $cloud_account_count=$this->testHoloAccounts($user);
+        log::info('test holo account finish');
         $cloud_customer_count = $this->testHoloCustomerAccount($user);
+        log::info('test holo customer account finish');
         $cloud_category_count = $this->testHoloCategorys($user);
+        log::info('test holo category finish');
 
         return view('issuereporting', compact('user','wc_category','wc_products','wc_response','wc_time','validDomain','cloud_product_count','cloud_account_count','cloud_customer_count','cloud_category_count'));
     }
