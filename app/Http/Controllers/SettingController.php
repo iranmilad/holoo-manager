@@ -89,7 +89,7 @@ class SettingController extends Controller
             $config->update_product_price = $request->input('config.update_product_price');
             $config->update_product_name = $request->input('config.update_product_name');
             $config->insert_new_product = $request->input('config.insert_new_product');
-            $config->invoice_items_no_holo_code = $request->input('config.invoice_items_no_holo_code');
+            $config->insert_product_with_zero_inventory = $request->input('config.insert_product_with_zero_inventory');
 
             #dd(json_encode($config));
             $user->config = json_encode($config);
