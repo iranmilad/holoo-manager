@@ -46,7 +46,7 @@ class InvoceManagerController extends Controller
                 "status" => (object)[
                     "title"=>($invoice->status =="ثبت سفارش فروش انجام شد" ? "ثبت شده" : "ثبت نشده"),
                     "type"=>($invoice->status =="ثبت سفارش فروش انجام شد" ? "success" : "danger"),
-                    "tooltip"=>$invoice->status,
+                    "tooltip"=>is_array($invoice->status) ? $invoice->status[0]: $invoice->status,
                 ],
                 "date" => Jalalian::fromFormat('Y-m-d H:i:s', $invoice->created_at)->format('%A, %d %B %y')
             ];
