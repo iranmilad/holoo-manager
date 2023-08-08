@@ -269,10 +269,10 @@
                 <!--begin::Col-->
                 <div class="col-lg-8">
                     <!--begin::Col-->
-                    <select name="config[invoice_items_no_holo_code]" class="form-select form-select-solid" data-minimum-results-for-search="Infinity"  data-control="select2" data-close-on-select="true" data-placeholder="انتخاب کنید" data-allow-clear="false">
+                    <select name="config[insert_product_with_zero_inventory]" class="form-select form-select-solid" data-minimum-results-for-search="Infinity"  data-control="select2" data-close-on-select="true" data-placeholder="انتخاب کنید" data-allow-clear="false">
                     <option></option>
-                    <option value="0" @selected($user->config->invoice_items_no_holo_code == "0")>غیرفعال</option>
-                    <option value="1" @selected($user->config->invoice_items_no_holo_code == "1")>فعال</option>
+                    <option value="0" @selected($user->config->insert_product_with_zero_inventory == "0")>غیرفعال</option>
+                    <option value="1" @selected($user->config->insert_product_with_zero_inventory == "1")>فعال</option>
                     </select>
                     <!--end::Col-->
                 </div>
