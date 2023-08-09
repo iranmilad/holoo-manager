@@ -15,7 +15,7 @@ trait Wc{
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $user->siteUrl.'/wp-json/wc/v3/products/categories',
+            CURLOPT_URL => $user->siteUrl.'/wp-json/wc/v3/products/categories?page=1&per_page=100',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
