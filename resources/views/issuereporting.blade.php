@@ -253,7 +253,7 @@
           <div class="col-10">
             <span>ماژول به روزرسانی قیمت</span>
           </div>
-            @if ($user->config->update_product_price==1 )
+            @if ($user->config!=null and $user->config->update_product_price==1 )
             <div class="col-2">
                 <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="به روزرسانی قیمت فعال است">
                 <span class="path1"></span>
@@ -276,7 +276,7 @@
           <div class="col-10">
             <span>ماژول به روزرسانی موجودی</span>
           </div>
-            @if ($user->config->update_product_stock==true )
+            @if ($user->config!=null and $user->config->update_product_stock==true )
             <div class="col-2">
                 <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="به روزرسانی موجودی فعال است">
                 <span class="path1"></span>
@@ -299,7 +299,7 @@
           <div class="col-10">
             <span>ماژول ثبت فاکتور یا پیش فاکتور</span>
           </div>
-            @if ($user->config->save_sale_invoice!=0 or $user->config->save_pre_sale_invoice!=0)
+            @if($user->config!=null and ($user->config->save_sale_invoice!=0 or $user->config->save_pre_sale_invoice!=0))
             <div class="col-2">
                 <i class="ki-duotone ki-check-circle fs-1 text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="ماژول ثبت فاکتور یا پیش فاکتور فعال است">
                 <span class="path1"></span>
