@@ -331,7 +331,7 @@
             </div>
             @else
             <div class="col-2">
-                <i class="ki-duotone ki-cross-circle fs-1 text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="دامین مورد نظر نامعتبر است یا شامل https بوده و دسترسی ووکامرس بر روی ان ادرس فعال باشد سرویس تنها قادر است روی ادرس های رمزنگاری شده سرویس دهی انجام دهد">
+                <i class="ki-duotone ki-cross-circle fs-1 text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="دامین مورد نظر نامعتبر است یا شامل  https نیست  و دسترسی ووکامرس بر روی ان ادرس فعال باشد سرویس تنها قادر است روی ادرس های رمزنگاری شده سرویس دهی انجام دهد">
                 <span class="path1"></span>
                 <span class="path2"></span>
                 </i>
