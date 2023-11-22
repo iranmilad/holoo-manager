@@ -68,6 +68,7 @@ trait Wc{
         $gateways=[];
         if ($responseCode == 200) {
             $responseData = json_decode($response, true); // Decode the JSON response
+            if ($responseData!=null)
             foreach($responseData as $value){
                 $gateways[]=(object)array("id"=>$value["id"],"title"=>$value["title"]);
             }
