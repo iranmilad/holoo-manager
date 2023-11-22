@@ -107,7 +107,7 @@ trait Wc{
         $products=[];
         if ($responseCode == 200) {
             $responseData = json_decode($response, true); // Decode the JSON response
-            if (count($responseData)>0)
+            if ($responseData!=null)
             foreach($responseData as $value){
                 $products[]=(object)array("code"=>$value["id"],"name"=>$value["name"]);
             }
