@@ -33,6 +33,7 @@ trait Wc{
         $categorys=[];
         if ($responseCode == 200) {
             $responseData = json_decode($response, true); // Decode the JSON response
+            if ($responseData!=null)
             foreach($responseData as $value){
                 $categorys[]=(object)array("code"=>$value["id"],"name"=>$value["name"]);
             }
