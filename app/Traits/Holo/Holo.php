@@ -361,7 +361,7 @@ trait Holo{
             #{id: 123 , name: "کفش",amount: 20, price: "24000", status: 0}
 
             foreach($response as $product){
-                $products[]=(object)["id"=>$product["a_Code"],"name"=>$product["name"],"amount"=>$product["few"],"price"=>$product["sellPrice"],"status"=>0];
+                $products[]=(object)["id"=>$product["a_Code"],"name"=>$product["name"],"amount"=>$product["few"],"price"=>$product["sellPrice"],"poshak"=>$product["poshak"],"status"=>0];
             }
 
 
@@ -387,6 +387,51 @@ trait Holo{
             "Dbname" => $user->holooCustomerID."_holoo1",
             "Table" => "Article",
             "MsgType" => "1",
+            "MsgValue" => $msgValue,
+            "MsgError" => null,
+            "Message" => $msgType,
+        ];
+        $json = json_encode ($array);
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url.'/webhook',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            // Use the strings in the post fields
+            CURLOPT_POSTFIELDS => $json,
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        //log::info($response);
+
+        return true;
+    }
+
+    public function addProductsPoshakWebhook($user,$products){
+        $url = env('SERVICE_URL');
+
+        $hookMsgValue=[];
+        $hookMsgType=[];
+        foreach($products as $product){
+            $hookMsgValue[]=$product;
+            $hookMsgType[] = 2;
+        }
+        // Convert the arrays to strings
+        $msgValue = implode (",", $hookMsgValue);
+        $msgType = implode (",", $hookMsgType);
+        $array = [
+            "Dbname" => $user->holooCustomerID."_holoo1",
+            "Table" => "Poshak",
+            "MsgType" => "0",
             "MsgValue" => $msgValue,
             "MsgError" => null,
             "Message" => $msgType,

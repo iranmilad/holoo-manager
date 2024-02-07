@@ -71,8 +71,12 @@ class ProductController extends Controller
         $holooProductCategories=$this->getGroupProducts($user,$productGp);
         foreach($holooProductCategories as $key=>$value){
             if( $value->id == $id ){
-
-                $this->addProductsWebhook($user,[$id]);
+                if ($value->poshak!=null){
+                    $this->addProductsPoshakWebhook($user,[$id]);
+                }
+                else{
+                    $this->addProductsWebhook($user,[$id]);
+                }
                 $data=(object)[];
                 $data = $value;
                 $data->{"rowId"} =(int)$rowId;
