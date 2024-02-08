@@ -24,7 +24,7 @@
 
                         @foreach ($wcCategories as $wcCategory)
                             @php
-                                $selected = isset($user->config->product_cat->{$category['code']}) && in_array($wcCategory->code, $user->config->product_cat->{$category->code});
+                                $selected = isset($user->config->product_cat->{$category['code']}) && in_array($wcCategory->code, (array)$user->config->product_cat->{$category->code});
                             @endphp
                             <option value="{{ $wcCategory->code }}" @if($selected) selected @endif>{{ $wcCategory->name }}</option>
                         @endforeach
