@@ -124,6 +124,7 @@ class ProductController extends Controller
         $holooProductCategories=$this->getGroupProducts($user,$productGp);
         $total=[];
         $total_ides=[];
+        $total_ides_poshak=[];
 
         foreach($holooProductCategories as $key=>$value){
             foreach($ids as $id){
@@ -134,13 +135,25 @@ class ProductController extends Controller
                     $data = $value;
                     $data->{"rowId"} =(int) $id->rowId;
                     $total[]=$data;
-                    $total_ides[]=$id->id;
+                    if ($value->poshak!=null){
+                        $total_ides_poshak[]=$id->id;
+                    }
+                    else{
+                        $total_ides[]=$id->id;
+                    }
+
                 }
             }
 
         }
+        if(count($total_ides)>0){
+            $this->addProductsWebhook($user,$total_ides);
+        }
+        if(count($total_ides_poshak)>0){
+            $this->addProductsPoshakWebhook($user,$total_ides_poshak);
+        }
 
-        $this->addProductsWebhook($user,$total_ides);
+
         return (object)["data"=> $total,"message"=>"درخواست با موفقیت ارسال شد"];
 
 
