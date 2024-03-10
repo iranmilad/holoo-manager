@@ -372,7 +372,7 @@
                           <!--begin::Col-->
                           <input type="number" name="customer_account"
                               class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-                              placeholder="شماره شناسه مشتری جهت ثبت وارد کنید" value="{{ $user->customer_account }}" />
+                              placeholder="شماره شناسه مشتری را وارد کنید" value="{{ $user->customer_account }}" />
                           <!--end::Col-->
                       </div>
                       <!--end::Col-->
