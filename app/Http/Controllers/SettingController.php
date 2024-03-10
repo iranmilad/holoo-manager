@@ -28,6 +28,8 @@ class SettingController extends Controller
 
 
             $user->customer_sarfasl = $request->input('customer_sarfasl');
+            $user->customer_account = $request->input('customer_account');
+
 
             $user->save();
              // Redirect back with success message
