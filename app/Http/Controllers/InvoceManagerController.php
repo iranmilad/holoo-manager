@@ -33,7 +33,7 @@ class InvoceManagerController extends Controller
 
         $invoices = Invoice::where(['user_id'=>$user->id])
                             ->whereBetween("created_at", [$startOfDay, $endOfDay])
-                            ->whereIn("invoiceStatus",['processing'])
+                            ->whereIn("invoiceStatus",['processing','completed'])
                             ->get()->all();
 
         $total=[];
