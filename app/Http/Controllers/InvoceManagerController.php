@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\Holo\Holo;
-use App\Traits\Wc\Wc;
 use App\Models\User;
+use App\Traits\Wc\Wc;
 use App\Models\Invoice;
 use App\Models\Category;
+use App\Traits\Holo\Holo;
 use Illuminate\Http\Request;
 use Morilog\Jalali\Jalalian;
 use Morilog\Jalali\CalendarUtils;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 class InvoceManagerController extends Controller
@@ -26,7 +27,7 @@ class InvoceManagerController extends Controller
         //{data: [{id: 123 , name: "فرهاد باقری", price: "24000", status: 0, date: "1400-01-01"}]}
         $user= Auth::user();
         $dateTime = CalendarUtils::createDatetimeFromFormat('Y-m-d', $date);
-
+        Log::info($dateTime);
         $startOfDay = $dateTime->format('Y-m-d 00:00:00');
         $endOfDay = $dateTime->format('Y-m-d 23:59:59');
 
