@@ -27,7 +27,7 @@ class InvoceManagerController extends Controller
         //{data: [{id: 123 , name: "فرهاد باقری", price: "24000", status: 0, date: "1400-01-01"}]}
         $user= Auth::user();
         $dateTime = CalendarUtils::createDatetimeFromFormat('Y-m-d', $date);
-        Log::info((string)$dateTime);
+
         $startOfDay = $dateTime->format('Y-m-d 00:00:00');
         $endOfDay = $dateTime->format('Y-m-d 23:59:59');
 
@@ -52,7 +52,7 @@ class InvoceManagerController extends Controller
                 "date" => Jalalian::forge($invoice->created_at)->format('%A, %d %B %y')
             ];
         }
-        return (object)["data"=>$total];
+        return (object)["data"=>$total,"cal"=>$dateTime];
     }
 
     /**
