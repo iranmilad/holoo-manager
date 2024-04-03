@@ -72,7 +72,14 @@ class InvoceManagerController extends Controller
         ->first();
 
 
-        $invoice = Invoice::where(['user_id'=>$user->id,"invoiceId"=>$id,"invoiceStatus"=>'processing'])->first();
+        $invoice = Invoice::where('user_id', $user->id)
+        ->where('invoiceId', $id)
+        ->where(function($query) {
+            $query->where('invoiceStatus', 'processing')
+                  ->orWhere('invoiceStatus', 'completed');
+        })
+        ->first();
+
         Invoice::where(['id'=>$invoice->id])
         ->update([
             'status' => null,
