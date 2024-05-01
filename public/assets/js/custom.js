@@ -905,3 +905,31 @@ function Alarm({
     if (type === "warning") toastr.warning(msg, title);
     if (type === "error") toastr.error(msg, title);
 }
+
+
+$(document).ready(function(){
+    $('#products_select_2').change(function(){
+        var categoryId = $(this).val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/subCategory/'. categoryId,
+            type: 'GET',
+            success: function(response){
+                // خالی کردن گزینه‌های موجود در زیر گروه‌ها
+                $('#products_sub_select').empty();
+                // اضافه کردن گزینه‌های جدید به زیر گروه‌ها
+                $.each(response.data, function(key, value){
+                    $('#products_sub_select').append('<option value="' + value.code + '">' + value.name + '</option>');
+                });
+            },
+            error: function(xhr, status, error) {
+                // در صورت بروز خطا، پیام خطا را نمایش دهید
+                console.error(xhr.responseText);
+            }
+        });
+    });
+});

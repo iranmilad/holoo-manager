@@ -128,6 +128,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('/products/{id}', [ProductController::class,"getHoloProductList"])->name("products.getHoloProductList");
+    Route::get('/subCategory/{id}', [ProductController::class,"getWcSubCategoryList"])->name("products.getWcSubCategoryList");
     Route::post('/products/batch', [ProductController::class,"addProducts"])->name("products.addProducts");
     Route::get('/products', [ProductController::class,"index"])->name("products.index");
     Route::post('/products', [ProductController::class,"addProduct"])->name("products.addProduct");

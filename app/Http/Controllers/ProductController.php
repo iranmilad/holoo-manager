@@ -39,10 +39,18 @@ class ProductController extends Controller
     {
         $user= Auth::user();
         $holooProductCategories=$this->getGroupProducts($user,$id);
-
         return (object)["data"=>$holooProductCategories];
     }
-
+    /**
+     *
+     * get wc sub category list for special user
+     */
+    public function getWcProductList($categoryId)
+    {
+        $user= Auth::user();
+        $WcCategoryChildren  = $this->getWcCategoryChildren($user, $categoryId);
+        return (object)["data"=>$WcCategoryChildren];
+    }
     /**
      * add one product to wc.
      */
