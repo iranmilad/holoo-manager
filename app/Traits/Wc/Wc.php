@@ -11,40 +11,60 @@ trait Wc{
      */
     public function getWcCategory($user): array
     {
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $user->siteUrl . '/wp-json/wc/v3/products/categories?page=1&per_page=100',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_USERAGENT => 'Holoo',
-            CURLOPT_USERPWD => $user->consumerKey . ":" . $user->consumerSecret,
-        ));
-
-        $response = curl_exec($curl);
-
-        $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
+        $page = 1;
+        $perPage = 100;
         $categorys = [];
-        if ($responseCode == 200) {
-            $responseData = json_decode($response, true); // Decode the JSON response
-            if ($responseData != null) {
-                foreach ($responseData as $value) {
-                    $category = (object)array("code" => $value["id"], "name" => $value["name"]);
-                    // اضافه کردن زیرمجموعه‌های گروه کالا به گروه اصلی
-                    //$category->children = $this->getWcCategoryChildren($user, $value["id"]);
-                    //$mergedCategory = array_merge((array)$category, (array)$category->children);
-                    $categorys[] = $category;
+
+        while (true) {
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $user->siteUrl . '/wp-json/wc/v3/products/categories?page=' . $page . '&per_page=' . $perPage,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_USERAGENT => 'Holoo',
+                CURLOPT_USERPWD => $user->consumerKey . ":" . $user->consumerSecret,
+            ));
+
+            $response = curl_exec($curl);
+
+            $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
+
+            if ($responseCode == 200) {
+                $responseData = json_decode($response, true); // Decode the JSON response
+
+                if ($responseData != null) {
+                    foreach ($responseData as $value) {
+                        $category = (object) array("code" => $value["id"], "name" => $value["name"]);
+                        $categorys[] = $category;
+                    }
+
+                    // افزایش شماره صفحه برای دریافت صفحه بعدی
+                    $page++;
+
+                    // اگر تعداد آیتم‌ها کمتر از تعداد درخواست شده بود، به اتمام رسیده‌ایم
+                    if (count($responseData) < $perPage) {
+                        break;
+                    }
+                } else {
+                    // اگر پاسخ JSON خالی بود، خروج از حلقه
+                    break;
                 }
+            } else {
+                // اگر کد پاسخ ناموفق بود، خروج از حلقه
+                break;
             }
+
+            curl_close($curl);
         }
 
-        curl_close($curl);
         return $categorys;
     }
+
 
 
     /**
