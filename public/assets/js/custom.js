@@ -916,7 +916,7 @@ $(document).ready(function(){
             }
         });
         $.ajax({
-            url: '/subCategory/'. categoryId,
+            url: '/subCategory/' + categoryId,
             type: 'GET',
             success: function(response){
                 // خالی کردن گزینه‌های موجود در زیر گروه‌ها
