@@ -56,25 +56,6 @@
       <!--end::group-->
 
 
-      <!--begin:: Group-->
-      <div class="row mb-6">
-        <!--begin::Tags-->
-        <label class="col-lg-4 col-form-label required fw-semibold fs-6">زیر گروه هدف</label>
-        <!--end::Tags-->
-        <!--begin::Col-->
-        <div class="col-lg-8">
-
-          <!--begin::Col-->
-          <select class="form-select form-select-solid" data-control="select3" id="products_sub_select" data-close-on-select="true" data-placeholder="انتخاب کنید"  data-minimum-results-for-search="Infinity">
-            <option>    گروه اصلی</option>
-          </select>
-          <!--end::Col-->
-
-
-        </div>
-        <!--end::Col-->
-      </div>
-      <!--end::group-->
 
 
 
