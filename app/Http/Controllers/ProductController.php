@@ -45,7 +45,7 @@ class ProductController extends Controller
      *
      * get wc sub category list for special user
      */
-    public function getWcProductList($categoryId)
+    public function getWcSubCategoryList($categoryId)
     {
         $user= Auth::user();
         $WcCategoryChildren  = $this->getWcCategoryChildren($user, $categoryId);
