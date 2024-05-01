@@ -7,15 +7,14 @@ trait Wc{
 
     /**
      * @param User $user
-     * @return $this|array
+     * @return array
      */
-    public function getWcCategory($user):array {
-
-
+    public function getWcCategory($user): array
+    {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $user->siteUrl.'/wp-json/wc/v3/products/categories?page=1&per_page=100',
+            CURLOPT_URL => $user->siteUrl . '/wp-json/wc/v3/products/categories?page=1&per_page=100',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
@@ -23,19 +22,23 @@ trait Wc{
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
             CURLOPT_USERAGENT => 'Holoo',
-            CURLOPT_USERPWD => $user->consumerKey. ":" . $user->consumerSecret,
+            CURLOPT_USERPWD => $user->consumerKey . ":" . $user->consumerSecret,
         ));
 
         $response = curl_exec($curl);
 
-
         $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
-        $categorys=[];
+        $categorys = [];
         if ($responseCode == 200) {
             $responseData = json_decode($response, true); // Decode the JSON response
-            if ($responseData!=null)
-            foreach($responseData as $value){
-                $categorys[]=(object)array("code"=>$value["id"],"name"=>$value["name"]);
+            if ($responseData != null) {
+                foreach ($responseData as $value) {
+                    $category = (object)array("code" => $value["id"], "name" => $value["name"]);
+                    // اضافه کردن زیرمجموعه‌های گروه کالا به گروه اصلی
+                    $category->children = $this->getWcCategoryChildren($user, $value["id"]);
+                    $mergedCategory = array_merge((array)$category, (array)$category->children);
+                    $categorys[] = $mergedCategory;
+                }
             }
         }
 
@@ -43,6 +46,44 @@ trait Wc{
         return $categorys;
     }
 
+
+    /**
+     * @param User $user
+     * @param int $categoryId
+     * @return array
+     */
+    public function getWcCategoryChildren($user, $categoryId): array
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $user->siteUrl . '/wp-json/wc/v3/products/categories/' . $categoryId . '/children',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_USERAGENT => 'Holoo',
+            CURLOPT_USERPWD => $user->consumerKey . ":" . $user->consumerSecret,
+        ));
+
+        $response = curl_exec($curl);
+
+        $responseCode = curl_getinfo($curl, CURLINFO_HTTP_CODE); // Get the response code
+        $categorys = [];
+        if ($responseCode == 200) {
+            $responseData = json_decode($response, true); // Decode the JSON response
+            if ($responseData != null) {
+                foreach ($responseData as $value) {
+                    $categorys[] = (object)array("code" => $value["id"], "name" => $value["name"]);
+                }
+            }
+        }
+
+        curl_close($curl);
+        return $categorys;
+    }
 
     public function paymentGateways($user):array {
 
