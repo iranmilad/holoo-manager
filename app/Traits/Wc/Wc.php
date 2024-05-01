@@ -35,9 +35,9 @@ trait Wc{
                 foreach ($responseData as $value) {
                     $category = (object)array("code" => $value["id"], "name" => $value["name"]);
                     // اضافه کردن زیرمجموعه‌های گروه کالا به گروه اصلی
-                    $category->children = $this->getWcCategoryChildren($user, $value["id"]);
-                    $mergedCategory = array_merge((array)$category, (array)$category->children);
-                    $categorys[] = $mergedCategory;
+                    //$category->children = $this->getWcCategoryChildren($user, $value["id"]);
+                    //$mergedCategory = array_merge((array)$category, (array)$category->children);
+                    $categorys[] = $category;
                 }
             }
         }
